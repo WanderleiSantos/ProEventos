@@ -20,10 +20,23 @@
 
     <ItemGroup>
       <Compile Remove="WeatherForecast.cs" />
+      <Compile Remove="Models\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ProEventos.Application\ProEventos.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Models\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Models\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Models\**" />
     </ItemGroup>
 
 </Project>

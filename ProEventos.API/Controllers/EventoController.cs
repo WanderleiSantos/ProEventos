@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProEventos.API.Data;
-using ProEventos.API.Models;
+using ProEventos.Domain;
+
 
 namespace ProEventos.API.Controllers
 {
@@ -29,7 +30,7 @@ namespace ProEventos.API.Controllers
         [HttpGet]
         public Evento GetById(int id)
         {
-            return _context.Eventos.FirstOrDefault(evento => evento.EventoId == id);
+            return _context.Eventos.FirstOrDefault(evento => evento.Id == id);
         }
     }
 }
