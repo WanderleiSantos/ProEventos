@@ -21,22 +21,32 @@
     <ItemGroup>
       <Compile Remove="WeatherForecast.cs" />
       <Compile Remove="Models\**" />
+      <Compile Remove="Data\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ProEventos.Application\ProEventos.Application.csproj" />
+      <ProjectReference Include="..\ProEventos.Persistence\ProEventos.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Models\**" />
+      <EmbeddedResource Remove="Data\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Models\**" />
+      <None Remove="ProEventos.db" />
+      <None Remove="Data\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Models\**" />
+      <Content Remove="Data\Migrations\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data" />
     </ItemGroup>
 
 </Project>
