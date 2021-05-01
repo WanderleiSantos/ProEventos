@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain;
+using ProEventos.Persistence.Contexto;
 using ProEventos.Persistence.Contratos;
 
 namespace ProEventos.Persistence
@@ -28,7 +29,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(palestranteEvento => palestranteEvento.Palestrante);
             }
 
-            query = query.OrderBy(evento => evento.Id)
+            query = query.AsNoTracking().OrderBy(evento => evento.Id)
                 .Where(evento => evento.Tema.ToLower().Contains(tema.ToLower()));
 
             return await query.ToArrayAsync();
@@ -47,7 +48,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(palestranteEvento => palestranteEvento.Palestrante);
             }
 
-            query = query.OrderBy(evento => evento.Id);
+            query = query.AsNoTracking().OrderBy(evento => evento.Id);
 
             return await query.ToArrayAsync();
         }
@@ -65,7 +66,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(palestranteEvento => palestranteEvento.Palestrante);
             }
 
-            query = query.OrderBy(evento => evento.Id);
+            query = query.AsNoTracking().OrderBy(evento => evento.Id);
 
             return await query.FirstOrDefaultAsync(evento => evento.Id == eventoId);
         }
