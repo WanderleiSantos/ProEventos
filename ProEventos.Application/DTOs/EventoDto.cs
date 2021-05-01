@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProEventos.API.DTOs
+namespace ProEventos.Application.DTOs
 {
     public class EventoDto
     {
