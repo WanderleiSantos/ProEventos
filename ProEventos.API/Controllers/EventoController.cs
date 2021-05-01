@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProEventos.API.DTOs;
 using ProEventos.Application.Contratos;
 using ProEventos.Domain;
 using ProEventos.Persistence.Contexto;
@@ -29,7 +30,22 @@ namespace ProEventos.API.Controllers
             {
                 var eventos = await _eventosService.GetAllEventosAsync(true);
                 if (eventos == null) return NotFound("Nenhum evento encontrado.");
-                return Ok(eventos);
+                var eventoRetorno = new List<EventoDto>();
+                foreach (var evento in eventos)
+                {
+                    eventoRetorno.Add(new EventoDto()
+                    {
+                        Id = evento.Id,
+                        Local = evento.Local,
+                        DataEvento = evento.DataEvento.ToString(),
+                        Tema = evento.Tema,
+                        QtdPessoas = evento.QtdPessoas,
+                        ImagemURL = evento.ImagemURL,
+                        Telefone = evento.Telefone,
+                        Email = evento.Email
+                    });
+                }
+                return Ok(eventoRetorno);
             }
             catch (Exception e)
             {
